@@ -1,6 +1,4 @@
 def bpe(sentence):
-	sentence = sentence.lower()
-	list_sentence = list(set(*[sentence]))
-	return list_sentence
+	return sorted(set(sentence.lower())) # it will return a list
 
 print (bpe("Hi! My name is the Shy"))
