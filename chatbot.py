@@ -10,7 +10,6 @@ def preprocessing(user_input):
 	user_input = user_input.lower()
 	# remove punctuation	
 	non_punct = ''.join(list(map(lambda s: ' ' if s in string.punctuation else s , user_input))).split(' ')
-	print(non_punct)
 	non_punct = ' '.join(list(filter(checkNone, non_punct)))
 	return non_punct
 
