@@ -32,8 +32,8 @@ def merge_vocab(pair, v_in):
 
 #vocab = {'l o w </w>' : 5, 'l o w e r </w>' : 2}
 
-vocab = makeVocab("Hi djfalkfjalkfj ngu ngu!!!,m !!!")
-num_merges = 10
+vocab = makeVocab("Hello, how are you doing?")
+num_merges = 5
 for _ in range(num_merges):
   pairs = get_stats(vocab)
   best = max(pairs, key=pairs.get)
