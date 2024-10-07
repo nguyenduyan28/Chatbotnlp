@@ -1,15 +1,14 @@
 import re, collections
 from chatbot import preprocessing
-
 def makeVocab(sentence):
   sentence = preprocessing(sentence) # remove punct and lower
-  vocab = collections.defaultdict(int)
-
+  unique_letter = set(sentence)
+  print(f'unique_letter is : {unique_letter}')
   for word in sentence.split():
     word = ' '.join(word)
     word += ' </w>'
     vocab[word] += 1
-  return vocab
+  return vocab, unique_letter
 
 
 def get_stats(vocab):
@@ -32,15 +31,17 @@ def merge_vocab(pair, v_in):
 
 #vocab = {'l o w </w>' : 5, 'l o w e r </w>' : 2}
 
-vocab = makeVocab("Hello, how are you doing?")
+vocab, unique_letter = makeVocab("Hello, how are you doing?")
 num_merges = 5
+
 for _ in range(num_merges):
   pairs = get_stats(vocab)
   best = max(pairs, key=pairs.get)
+  for arg in best:
+    unique_letter.add(best)
   vocab = merge_vocab(best, vocab)
-  print(vocab)
-  print(best)
-  
 
 
 
+print(vocab)
+print(sorted(unique_letter))
